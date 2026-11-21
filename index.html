@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASANI - Awal Usahamu Dimulai dari Sini | Ekosistem Ekonomi Mahasiswa</title>
+  <meta name="description" content="Platform marketplace dan penyedia jasa digital khusus mahasiswa. Dari Mahasiswa untuk Mahasiswa. Horizon University Indonesia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement / Campus Badge Bar -->
+  <aside class="top-banner">
+    <div class="container banner-inner">
+      <div class="banner-left">
+        <span class="badge-org">Horizon University Indonesia</span>
+        <span class="banner-text">🌟 Platform Ekosistem Ekonomi Mahasiswa - Kelompok 6</span>
+      </div>
+      <div class="banner-right">
+        <a href="#about-asani" class="banner-link" onclick="openAboutModal()">Kenapa ASANI?</a>
+        <span class="divider-dot">•</span>
+        <button class="btn-text-light" onclick="openPillarModal()">💰 Earn, 🛒 Buy, 🚀 Build</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Header / Navbar -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+      
+      <!-- Brand Logo -->
+      <div class="brand-logo" onclick="navigateTo('home')">
+        <div class="logo-icon-wrap">
+          <!-- ASANI Custom SVG Logo: Graduation Cap + 'A' + Orange Arrow & Bag -->
+          <svg viewBox="0 0 100 100" class="asani-svg-logo" aria-label="ASANI Logo">
+            <!-- Mortarboard Cap -->
+            <polygon points="50,14 84,27 50,40 16,27" fill="#1e3a8a"/>
+            <path d="M78,32 v14 c0,4 -6,8 -12,8" fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="66" cy="56" r="3" fill="#f97316"/>
+            <!-- Triangle A base -->
+            <path d="M50,30 L22,86 L36,86 L50,56 L64,86 L78,86 Z" fill="#1d4ed8"/>
+            <!-- Shopping Bag inside A -->
+            <path d="M43,62 L57,62 L59,76 L41,76 Z" fill="#f97316"/>
+            <path d="M46,62 C46,57 54,57 54,62" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+            <!-- Swoosh Arrow -->
+            <path d="M20,68 C22,82 42,92 68,78 C80,72 84,60 86,52" fill="none" stroke="#f97316" stroke-width="5" stroke-linecap="round"/>
+            <polygon points="86,44 89,56 78,52" fill="#f97316"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">ASANI</span>
+          <span class="brand-slogan">Awal Usahamu Dimulai di Sini</span>
+        </div>
+      </div>
+
+      <!-- Campus Location Quick Selector (Slide 7 & 9) -->
+      <div class="campus-selector-pill" onclick="openCampusModal()" title="Klik untuk ganti kampus">
+        <div class="pin-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div class="campus-info">
+          <span class="campus-label">Area Kampus:</span>
+          <span class="campus-name" id="currentCampusName">Horizon University Karawang</span>
+        </div>
+        <div class="chevron-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Center Search Bar (Slide 7, 8 & 9) -->
+      <div class="header-search">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="globalSearchInput" placeholder="Cari kebutuhan kampus (makanan, buku, jasa print, desain)..." oninput="handleSearch(this.value)">
+          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()" style="display:none;" title="Bersihkan pencarian">&times;</button>
+        </div>
+      </div>
+
+      <!-- Right Action Buttons -->
+      <div class="header-actions">
+        <!-- Post New Product/Service (Earn / Build) -->
+        <button class="btn btn-primary btn-post" onclick="openAddListingModal()">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>+ Buka Lapak</span>
+        </button>
+
+        <!-- Chat Shortcut (Slide 7 & 8) -->
+        <button class="icon-button" onclick="navigateTo('chat')" title="Pesan & Diskusi" aria-label="Buka Chat">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="badge-dot" id="chatBadgeDot">2</span>
+        </button>
+
+        <!-- Orders / Cart Button -->
+        <button class="icon-button" onclick="navigateTo('orders')" title="Pesanan & Transaksi" aria-label="Pesanan Saya">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="badge-dot" id="ordersBadgeCount">1</span>
+        </button>
+
+        <!-- Auth Button / Profile -->
+        <div class="user-auth-wrap" id="userAuthSection">
+          <button class="btn btn-outline-primary" id="loginBtn" onclick="openAuthModal()">Masuk / Daftar</button>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Top Bar for Phone screens -->
+  <div class="mobile-subbar">
+    <div class="campus-selector-pill mobile-campus-pill" onclick="openCampusModal()">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      </svg>
+      <span id="mobileCampusName">Horizon University Karawang</span>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Mobile Search Bar -->
+  <div class="mobile-search-container">
+    <div class="search-input-wrapper">
+      <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" placeholder="Cari kebutuhan kampus..." oninput="handleSearch(this.value)">
+    </div>
+  </div>
+
+  <!-- Main App Content Shell -->
+  <main class="app-main-content">
+
+    <!-- VIEW 1: HOME VIEW -->
+    <div class="view-panel active" id="viewHome">
+      
+      <!-- Hero Campus Banner with Presentation Branding (Slide 1 & 4) -->
+      <section class="hero-section">
+        <div class="container hero-container">
+          <div class="hero-text-col">
+            <div class="hero-badge">
+              <span class="pulse-dot"></span> Dari Mahasiswa untuk Mahasiswa
+            </div>
+            <h1 class="hero-title">
+              AWAL USAHAMU <br><span class="highlight-text">DIMULAI DI SINI</span>
+            </h1>
+            <p class="hero-desc">
+              Platform marketplace &amp; ekosistem bisnis digital mahasiswa di lingkungan kampus Anda.
+              Jual produk kreasi, tawarkan keahlian jasa, atau temukan kebutuhan kuliah terdekat tanpa tenggelam di toko raksasa.
+            </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-hero-primary" onclick="openAddListingModal()">
+                🚀 Mulai Usaha Saya
+              </button>
+              <button class="btn btn-hero-secondary" onclick="scrollToCatalog()">
+                🛒 Jelajahi Katalog Kampus
+              </button>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-num">500+</span>
+                <span class="stat-label">Mahasiswa Berjual</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Lingkup Kampus</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num">0%</span>
+                <span class="stat-label">Potongan Biaya</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual-col">
+            <div class="hero-card-preview">
+              <div class="preview-header">
+                <div class="preview-campus-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path></svg>
+                  <span id="heroCampusBadge">Horizon University Karawang</span>
+                </div>
+                <span class="status-live">● Area Aktif</span>
+              </div>
+              <div class="preview-illustration">
+                <div class="preview-icon-hub">
+                  <div class="hub-pill hub-market">📦 Marketplace</div>
+                  <div class="hub-pill hub-fnb">🍔 Food &amp; Beverage</div>
+                  <div class="hub-pill hub-jasa">🛠️ Penyedia Jasa</div>
+                </div>
+                <div class="illustration-art">
+                  <div class="student-avatar-big">🎓</div>
+                  <div class="tag-floating tag-1">💡 Ide Bisnis</div>
+                  <div class="tag-floating tag-2">💰 Cuan Tambahan</div>
+                  <div class="tag-floating tag-3">🤝 COD Aman</div>
+                </div>
+              </div>
+              <div class="preview-footer-note">
+                "Mahasiswa bisa menjadi penjual sekaligus pembeli."
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 Main Category Cards (Exact Replica from Slide 9 Mockup) -->
+      <section class="section-categories">
+        <div class="container">
+          <div class="section-header-compact">
+            <div>
+              <h2 class="section-title">Layanan Kampus</h2>
+              <p class="section-subtitle">Pilih kategori untuk memfilter produk dan jasa di kampus Anda</p>
+            </div>
+            <div class="filter-reset-wrap">
+              <button class="btn btn-sm btn-ghost" id="resetCategoryBtn" onclick="filterByCategory('all')">
+                Lihat Semua (Reset)
+              </button>
+            </div>
+          </div>
+
+          <div class="categories-grid">
+            
+            <!-- Category 1: Marketplace (Purple/Pink gradient as in slide 9) -->
+            <div class="category-card card-marketplace" onclick="filterByCategory('marketplace')">
+              <div class="category-info">
+                <h3 class="category-name">Marketplace</h3>
+                <p class="category-desc">Atk, perlengkapan, pakaian, elektronik</p>
+                <span class="category-badge">Lihat Produk &rarr;</span>
+              </div>
+              <div class="category-icon-box">
+                <!-- Shopping bag icon -->
+                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Category 2: Food & Beverage (Orange/Amber gradient as in slide 9) -->
+            <div class="category-card card-fnb" onclick="filterByCategory('fnb')">
+              <div class="category-info">
+                <h3 class="category-name">Food &amp; Beverage</h3>
+                <p class="category-desc">Makanan, minuman, snack kampus</p>
+                <span class="category-badge">Lihat Menu &rarr;</span>
+              </div>
+              <div class="category-icon-box">
+                <!-- Food / Burger icon -->
+                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                  <line x1="6" y1="1" x2="6" y2="4"></line>
+                  <line x1="10" y1="1" x2="10" y2="4"></line>
+                  <line x1="14" y1="1" x2="14" y2="4"></line>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Category 3: Jasa (Cyan/Blue gradient as in slide 9) -->
+            <div class="category-card card-jasa" onclick="filterByCategory('jasa')">
+              <div class="category-info">
+                <h3 class="category-name">Jasa</h3>
+                <p class="category-desc">Les, print, laundry, perbaikan, desain</p>
+                <span class="category-badge">Lihat Jasa &rarr;</span>
+              </div>
+              <div class="category-icon-box">
+                <!-- Tools / Service icon -->
+                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Sub-filter pills & Search status -->
+      <section class="section-filter-bar">
+        <div class="container">
+          <div class="filter-bar-flex">
+            <div class="subfilter-scroll">
+              <button class="pill-btn active" data-sub="all" onclick="filterBySub('all', this)">Semua Item</button>
+              <button class="pill-btn" data-sub="makanan" onclick="filterBySub('makanan', this)">🍜 Makanan &amp; Minuman</button>
+              <button class="pill-btn" data-sub="print" onclick="filterBySub('print', this)">🖨️ Jasa Print &amp; Ketik</button>
+              <button class="pill-btn" data-sub="desain" onclick="filterBySub('desain', this)">🎨 Desain &amp; Editing</button>
+              <button class="pill-btn" data-sub="buku" onclick="filterBySub('buku', this)">📚 Buku &amp; ATK</button>
+              <button class="pill-btn" data-sub="antar" onclick="filterBySub('antar', this)">🛵 Antar Jemput &amp; Jastip</button>
+              <button class="pill-btn" data-sub="les" onclick="filterBySub('les', this)">🎓 Les Privat &amp; Tugas</button>
+              <button class="pill-btn" data-sub="elektronik" onclick="filterBySub('elektronik', this)">💻 Servis &amp; Gadget</button>
+            </div>
+            <div class="sort-dropdown-wrap">
+              <label for="sortSelect">Urutkan:</label>
+              <select id="sortSelect" onchange="handleSortChange(this.value)">
+                <option value="popular">🔥 Paling Populer</option>
+                <option value="newest">✨ Terbaru</option>
+                <option value="price-low">💸 Harga Termurah</option>
+                <option value="price-high">💎 Harga Tertinggi</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Active filters notification tag -->
+          <div class="active-query-tag" id="activeQueryTag" style="display:none;">
+            <span>Menampilkan hasil untuk: "<strong id="queryText"></strong>"</span>
+            <button class="btn-clear-tag" onclick="clearSearch()">Batalkan</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Catalog Grid (Slide 5, 7, 8) -->
+      <section class="section-catalog" id="catalogSection">
+        <div class="container">
+          <div class="catalog-header">
+            <div>
+              <h2 class="catalog-heading" id="catalogHeading">Katalog Produk &amp; Jasa Mahasiswa</h2>
+              <p class="catalog-sub" id="catalogSub">Menampilkan 12 penawaran di <strong id="catalogCampusHighlight">Horizon University Karawang</strong></p>
+            </div>
+            <div class="catalog-controls">
+              <span class="items-count-badge" id="itemsCountBadge">12 Item Ditemukan</span>
+            </div>
+          </div>
+
+          <!-- Products / Services Grid -->
+          <div class="catalog-grid" id="catalogGrid">
+            <!-- Populated dynamically via app.js -->
+          </div>
+
+          <!-- Empty State (When no results found) -->
+          <div class="empty-catalog-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <h3>Belum Ada Produk atau Jasa yang Cocok</h3>
+            <p>Coba gunakan kata kunci lain atau jadilah mahasiswa pertama yang membuka lapak untuk kategori ini!</p>
+            <button class="btn btn-primary" onclick="openAddListingModal()">+ Buka Lapak Baru</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Slide 6 Section: 3 Nilai Utama ASANI (Earn, Buy, Build) -->
+      <section class="section-values" id="valuesSection">
+        <div class="container">
+          <div class="section-title-center">
+            <span class="section-kicker">EKOSISTEM KAMPUS</span>
+            <h2 class="section-title">Nilai Umum Website ASANI</h2>
+            <p class="section-subtitle">Solusi nyata bagi mahasiswa untuk bertumbuh dan saling mendukung secara ekonomi</p>
+          </div>
+
+          <div class="values-grid">
+            
+            <!-- Card Earn -->
+            <div class="value-card">
+              <div class="value-header">
+                <span class="value-icon">💰</span>
+                <span class="value-badge badge-earn">Earn — Dapatkan Penghasilan</span>
+              </div>
+              <p class="value-intro">Mahasiswa dapat menawarkan:</p>
+              <ul class="value-list">
+                <li><span class="check-icon">✓</span> Produk fisik (snack, pakaian, kerajinan)</li>
+                <li><span class="check-icon">✓</span> Jasa &amp; keahlian (desain, ketik, fotografi)</li>
+                <li><span class="check-icon">✓</span> Pekerjaan freelance sesama rekan kampus</li>
+                <li><span class="check-icon">✓</span> Produk digital (template PPT, rangkuman materi)</li>
+              </ul>
+              <button class="btn btn-sm btn-outline-primary full-width" onclick="openAddListingModal()">Mulai Jualan Sekarang</button>
+            </div>
+
+            <!-- Card Buy -->
+            <div class="value-card">
+              <div class="value-header">
+                <span class="value-icon">🛒</span>
+                <span class="value-badge badge-buy">Buy — Memenuhi Kebutuhan</span>
+              </div>
+              <p class="value-intro">Mahasiswa dapat mencari:</p>
+              <ul class="value-list">
+                <li><span class="check-icon">✓</span> Barang kebutuhan kuliah harga hemat</li>
+                <li><span class="check-icon">✓</span> Jasa kilat dekat fakultas &amp; kosan</li>
+                <li><span class="check-icon">✓</span> Freelancer tepercaya dari satu almamater</li>
+                <li><span class="check-icon">✓</span> Makanan &amp; minuman siap COD saat jam istirahat</li>
+              </ul>
+              <button class="btn btn-sm btn-outline-primary full-width" onclick="scrollToCatalog()">Cari Kebutuhan Kuliah</button>
+            </div>
+
+            <!-- Card Build -->
+            <div class="value-card">
+              <div class="value-header">
+                <span class="value-icon">🚀</span>
+                <span class="value-badge badge-build">Build — Mengembangkan Bisnis</span>
+              </div>
+              <p class="value-intro">Mahasiswa dengan ide bisnis dapat:</p>
+              <ul class="value-list">
+                <li><span class="check-icon">✓</span> Membuat profil usaha mandiri</li>
+                <li><span class="check-icon">✓</span> Mempublikasikan produk &amp; prototype</li>
+                <li><span class="check-icon">✓</span> Mendapatkan pelanggan pertama</li>
+                <li><span class="check-icon">✓</span> Menerima feedback &amp; bangun reputasi</li>
+              </ul>
+              <button class="btn btn-sm btn-outline-primary full-width" onclick="openPillarModal()">Pelajari Flow Bisnis</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Masalah vs Solusi Banner -->
+      <section class="section-problem-solution">
+        <div class="container">
+          <div class="ps-card">
+            <div class="ps-header">
+              <h2>Mengapa ASANI Hadir?</h2>
+              <p>Menjembatani potensi ekonomi mahasiswa yang sering kali tenggelam di marketplace raksasa.</p>
+            </div>
+            <div class="ps-grid">
+              <div class="ps-box problem-box">
+                <div class="ps-box-title">
+                  <span class="ps-icon-red">⚠️</span>
+                  <h3>Masalah yang Dihadapi Mahasiswa</h3>
+                </div>
+                <ul>
+                  <li>Mahasiswa butuh penghasilan tambahan untuk uang saku &amp; biaya kuliah.</li>
+                  <li>Punya skill &amp; ide bisnis, tapi bingung memasarkan ke pelanggan pertama.</li>
+                  <li>Marketplace umum terlalu luas sehingga produk mahasiswa mudah tenggelam.</li>
+                  <li>Sulit mencari penyedia jasa yang dekat, terjangkau, dan dapat dipercaya.</li>
+                </ul>
+              </div>
+              <div class="ps-box solution-box">
+                <div class="ps-box-title">
+                  <span class="ps-icon-green">💡</span>
+                  <h3>Solusi dari ASANI</h3>
+                </div>
+                <ul>
+                  <li>Platform khusus mahasiswa dengan cakupan per kampus terdekat.</li>
+                  <li>Wadah uji pasar: <strong>Ide &rarr; Prototype &rarr; Produk &rarr; Penjualan</strong>.</li>
+                  <li>Mahasiswa bisa menjadi penjual sekaligus pembeli dalam satu ekosistem.</li>
+                  <li>Fitur chat interaktif &amp; transaksi tanpa perantara yang rumit.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VIEW 2: ORDERS & LAPAK SAYA -->
+    <div class="view-panel" id="viewOrders">
+      <div class="container view-page-container">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-title">Pesanan &amp; Lapak Saya</h1>
+            <p class="page-subtitle">Pantau transaksi belanjaan dan status produk yang Anda tawarkan</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddListingModal()">+ Tambah Produk Baru</button>
+        </div>
+
+        <div class="orders-tab-nav">
+          <button class="order-tab-btn active" onclick="switchOrderTab('buying', this)">Pesanan Saya (Beli)</button>
+          <button class="order-tab-btn" onclick="switchOrderTab('selling', this)">Lapak Saya (Jual)</button>
+        </div>
+
+        <div class="order-tab-content active" id="tabBuyingContent">
+          <div class="orders-list" id="buyingOrdersList">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <div class="order-tab-content" id="tabSellingContent">
+          <div class="orders-list" id="myListingsContainer">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: CHAT VIEW (Slide 7 & 8) -->
+    <div class="view-panel" id="viewChat">
+      <div class="container view-page-container">
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-title">Pesan &amp; Obrolan Kampus</h1>
+            <p class="page-subtitle">Komunikasi langsung antara mahasiswa pembeli dan penyedia jasa/produk</p>
+          </div>
+          <span class="badge-online-status">● Sistem Chat Aktif</span>
+        </div>
+
+        <div class="chat-app-layout">
+          <!-- Chat sidebar list -->
+          <div class="chat-conversations-list" id="chatConversationsList">
+            <!-- Populated via JS -->
+          </div>
+
+          <!-- Active Chat Conversation Pane -->
+          <div class="chat-active-window" id="chatActiveWindow">
+            <div class="chat-header-bar">
+              <div class="chat-recipient-info">
+                <div class="chat-avatar" id="activeChatAvatar">TN</div>
+                <div>
+                  <h4 class="chat-recipient-name" id="activeChatName">Teh Neneng (Kantin Gedung B)</h4>
+                  <span class="chat-recipient-role" id="activeChatRole">Penjual Nasi Ayam Geprek • Online</span>
+                </div>
+              </div>
+              <div class="chat-actions-top">
+                <button class="btn btn-sm btn-outline-primary" onclick="quickMessageCOD()">📍 Janjian COD</button>
+              </div>
+            </div>
+
+            <!-- Chat messages stream -->
+            <div class="chat-messages-body" id="chatMessagesBody">
+              <!-- Populated via JS -->
+            </div>
+
+            <!-- Quick Template Chips -->
+            <div class="chat-quick-chips">
+              <button class="chip-btn" onclick="sendQuickChip('Halo kak, apakah barang/jasa ini masih tersedia?')">Halo kak, masih ada?</button>
+              <button class="chip-btn" onclick="sendQuickChip('Bisa COD di depan Perpustakaan kampus siang ini?')">Bisa COD di Perpus?</button>
+              <button class="chip-btn" onclick="sendQuickChip('Berapa estimasi waktu pengerjaan jasanya ya kak?')">Estimasi waktu jasa?</button>
+            </div>
+
+            <!-- Chat input form -->
+            <form class="chat-input-form" onsubmit="handleSendChat(event)">
+              <input type="text" id="chatInputField" placeholder="Tulis pesan ke penjual..." autocomplete="off">
+              <button type="submit" class="btn btn-primary btn-send-chat">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: PROFIL SAYA (Slide 9 & 1) -->
+    <div class="view-panel" id="viewProfile">
+      <div class="container view-page-container">
+        <div class="profile-card-full">
+          <div class="profile-cover">
+            <div class="profile-avatar-large" id="profileAvatarLarge">RP</div>
+          </div>
+          <div class="profile-details-content">
+            <div class="profile-header-main">
+              <div>
+                <h2 class="profile-user-name" id="profileUserName">Rian Pratama</h2>
+                <p class="profile-user-meta" id="profileUserMeta">Mahasiswa Teknik Informatika '22 • Horizon University Karawang</p>
+                <div class="profile-badges-row">
+                  <span class="badge-tag">🎓 Mahasiswa Terverifikasi</span>
+                  <span class="badge-tag tag-seller">⭐ Penjual Bintang 4.9</span>
+                  <span class="badge-tag tag-campus" id="profileCampusTag">Horizon University</span>
+                </div>
+              </div>
+              <button class="btn btn-outline-primary" onclick="openAuthModal()">Ganti Akun</button>
+            </div>
+
+            <div class="profile-stats-row">
+              <div class="p-stat">
+                <span class="p-num" id="pTotalSold">14</span>
+                <span class="p-lbl">Transaksi Berhasil</span>
+              </div>
+              <div class="p-stat">
+                <span class="p-num" id="pActiveListings">2</span>
+                <span class="p-lbl">Lapak Aktif</span>
+              </div>
+              <div class="p-stat">
+                <span class="p-num">100%</span>
+                <span class="p-lbl">Kepuasan Pembeli</span>
+              </div>
+            </div>
+
+            <div class="profile-sections-grid">
+              <div class="profile-box">
+                <h3>Informasi Kontak Mahasiswa</h3>
+                <div class="info-row">
+                  <span class="info-label">Email Kampus:</span>
+                  <span class="info-val" id="profileEmail">rian.pratama@horizon.ac.id</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">No. WhatsApp:</span>
+                  <span class="info-val">+62 812-3456-7890</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Fakultas / Prodi:</span>
+                  <span class="info-val">Teknologi Informasi &amp; Komputer</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Area Kampus:</span>
+                  <span class="info-val">Jl. Pangkal Perjuangan KM 1 By Pass, Karawang</span>
+                </div>
+              </div>
+
+              <div class="profile-box">
+                <h3>Tentang Pengembang Website</h3>
+                <p class="about-author-text">
+                  Website <strong>ASANI</strong> dibuat sebagai proyek inovasi ekosistem kewirausahaan mahasiswa oleh <strong>Kelompok 6</strong> — <strong>Horizon University Indonesia</strong>.
+                </p>
+                <div class="dev-pills">
+                  <span>Aplikasi: ASANI Web v1.0</span>
+                  <span>Stack: HTML5 • CSS3 • JavaScript</span>
+                  <span>Desain: Simple UI Campus-Centric</span>
+                </div>
+                <button class="btn btn-sm btn-outline-primary mt-3" onclick="openAboutModal()">Lihat Presentasi Lengkap</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar (Slide 9 Mockup Replica) -->
+  <nav class="mobile-bottom-nav">
+    <button class="nav-item active" id="navHome" onclick="navigateTo('home')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Beranda</span>
+    </button>
+    <button class="nav-item" id="navOrders" onclick="navigateTo('orders')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+      </svg>
+      <span>Pesanan</span>
+    </button>
+    <button class="nav-item btn-nav-center" onclick="openAddListingModal()" title="Buka Lapak">
+      <div class="nav-center-circle">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </div>
+      <span>Jual</span>
+    </button>
+    <button class="nav-item" id="navChat" onclick="navigateTo('chat')">
+      <div class="nav-icon-badge-wrap">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="nav-badge-dot"></span>
+      </div>
+      <span>Chat</span>
+    </button>
+    <button class="nav-item" id="navProfile" onclick="navigateTo('profile')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Profil</span>
+    </button>
+  </nav>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- MODAL 1: PILIH LOKASI KAMPUS (Slide 9 Exact Mockup) -->
+  <div class="modal-backdrop" id="campusModal">
+    <div class="modal-card modal-campus-select">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <button class="btn-icon-back" onclick="closeCampusModal()" title="Kembali">&larr;</button>
+          <div>
+            <h3 class="modal-title">Pilih Lokasi Kampus</h3>
+            <p class="modal-sub">Pilih kampus untuk melihat produk &amp; layanan di sekitar kampus kamu</p>
+          </div>
+        </div>
+        <div class="modal-brand-badge">ASANI</div>
+      </div>
+
+      <div class="modal-body">
+        <!-- Campus Search Input -->
+        <div class="campus-search-box">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="campusSearchInput" placeholder="Cari nama kampus atau kota..." oninput="filterCampusList(this.value)">
+        </div>
+
+        <!-- Campus Grid (Slide 9: ITB, UI, Unpad, Horizon University Karawang) -->
+        <div class="campus-grid-list" id="campusGridList">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary full-width" onclick="confirmCampusSelection()">Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: MASUK / DAFTAR MAHASISWA (Slide 9 Left Mockup) -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal-card modal-auth">
+      <button class="btn-modal-close" onclick="closeAuthModal()">&times;</button>
+      
+      <div class="auth-hero-header">
+        <div class="auth-logo-row">
+          <div class="logo-icon-wrap sm">
+            <svg viewBox="0 0 100 100" class="asani-svg-logo">
+              <polygon points="50,14 84,27 50,40 16,27" fill="#1e3a8a"/>
+              <path d="M50,30 L22,86 L36,86 L50,56 L64,86 L78,86 Z" fill="#1d4ed8"/>
+              <path d="M43,62 L57,62 L59,76 L41,76 Z" fill="#f97316"/>
+              <path d="M20,68 C22,82 42,92 68,78 C80,72 84,60 86,52" fill="none" stroke="#f97316" stroke-width="5"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="auth-brand-name">ASANI</h2>
+            <p class="auth-brand-sub">Marketplace Kampus • Untuk Mahasiswa, Oleh Mahasiswa</p>
+          </div>
+        </div>
+        <h3 class="auth-mode-title" id="authModeTitle">Masuk ke Akun Kampus</h3>
+        <p class="auth-mode-sub">Awal Usahamu dimulai disini</p>
+      </div>
+
+      <div class="modal-body auth-body">
+        <form id="authForm" onsubmit="handleAuthSubmit(event)">
+          <div class="form-group">
+            <label for="authEmail">Email Kampus</label>
+            <div class="input-icon-wrap">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <input type="email" id="authEmail" required placeholder="nama.mahasiswa@kampus.ac.id" value="rian.pratama@horizon.ac.id">
+            </div>
+            <span class="form-hint">Gunakan email berakhiran .ac.id atau email kampus resmi</span>
+          </div>
+
+          <div class="form-group" id="nameGroup" style="display:none;">
+            <label for="authName">Nama Lengkap &amp; Jurusan</label>
+            <div class="input-icon-wrap">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input type="text" id="authName" placeholder="Contoh: Rian Pratama (Teknik Informatika '22)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="authPassword">Kata Sandi</label>
+            <div class="input-icon-wrap">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <input type="password" id="authPassword" required placeholder="••••••••" value="rahasia123">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width btn-submit-auth" id="authSubmitBtn">Masuk Sekarang</button>
+        </form>
+
+        <div class="auth-switch-text">
+          <span id="authSwitchPrompt">Belum punya akun?</span>
+          <button type="button" class="btn-link" id="authToggleModeBtn" onclick="toggleAuthMode()">Daftar Sekarang</button>
+        </div>
+
+        <div class="auth-quick-badges">
+          <span>📦 Marketplace</span>
+          <span>🍔 Food &amp; Beverage</span>
+          <span>🛠️ Jasa</span>
+          <span>💬 Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: TAMBAH LAPAK / PRODUK / JASA (Slide 6 - Earn & Build) -->
+  <div class="modal-backdrop" id="addListingModal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Buka Lapak Mahasiswa</h3>
+          <p class="modal-sub">Promosikan produk, makanan, atau keahlian jasa kamu ke sesama mahasiswa</p>
+        </div>
+        <button class="btn-modal-close" onclick="closeAddListingModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="addListingForm" onsubmit="handleCreateListing(event)">
+          
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="listingType">Jenis Penawaran *</label>
+              <select id="listingType" required onchange="handleListingTypeChange(this.value)">
+                <option value="marketplace">📦 Marketplace (Barang, ATK, Fashion, Buku)</option>
+                <option value="fnb">🍔 Food &amp; Beverage (Makanan, Minuman, Snack)</option>
+                <option value="jasa">🛠️ Jasa &amp; Freelance (Print, Desain, Servis, Les)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="listingSubCategory">Sub-Kategori</label>
+              <select id="listingSubCategory" required>
+                <!-- Populated dynamically based on type -->
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="listingTitle">Judul Produk / Layanan Jasa *</label>
+            <input type="text" id="listingTitle" required placeholder="Contoh: Jasa Print Tugas &amp; Makalah Antar ke Kosan">
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="listingPrice">Harga (Rp) *</label>
+              <input type="number" id="listingPrice" required placeholder="Contoh: 15000" min="500">
+            </div>
+
+            <div class="form-group">
+              <label for="listingPriceUnit">Satuan Harga</label>
+              <input type="text" id="listingPriceUnit" placeholder="Contoh: / porsi, / lembar, / jam, / pcs">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="listingDesc">Deskripsi Lengkap *</label>
+            <textarea id="listingDesc" rows="3" required placeholder="Jelaskan detail barang/jasa, kelebihan, kondisi, atau titik ketemuan di kampus..."></textarea>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="listingSeller">Nama Penjual / Penyedia *</label>
+              <input type="text" id="listingSeller" required placeholder="Contoh: Rian Pratama (TI '22)">
+            </div>
+
+            <div class="form-group">
+              <label for="listingWhatsapp">Nomor WhatsApp *</label>
+              <input type="tel" id="listingWhatsapp" required placeholder="Contoh: 081234567890">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="listingCampus">Lokasi Kampus</label>
+            <input type="text" id="listingCampus" readonly class="input-readonly">
+          </div>
+
+          <div class="form-group">
+            <label>Pilih Ikon / Ilustrasi Sampul</label>
+            <div class="sample-icons-row" id="sampleIconsPicker">
+              <!-- Clickable emoji/icon pills -->
+              <button type="button" class="icon-pick-btn active" onclick="pickListingIcon('📦', this)">📦 Paket</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('🍔', this)">🍔 Makanan</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('🧃', this)">🧃 Minuman</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('🖨️', this)">🖨️ Print</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('🎨', this)">🎨 Desain</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('📚', this)">📚 Buku</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('💻', this)">💻 Servis</button>
+              <button type="button" class="icon-pick-btn" onclick="pickListingIcon('🛵', this)">🛵 Jastip</button>
+            </div>
+            <input type="hidden" id="selectedIcon" value="📦">
+          </div>
+
+          <div class="modal-footer modal-footer-inline">
+            <button type="button" class="btn btn-ghost" onclick="closeAddListingModal()">Batal</button>
+            <button type="submit" class="btn btn-primary">Publikasikan Lapak</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: DETAIL PRODUK / JASA (Slide 5, 7, 8) -->
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal-card modal-detail">
+      <button class="btn-modal-close" onclick="closeDetailModal()">&times;</button>
+      
+      <div class="detail-grid">
+        <div class="detail-visual-side" id="detailVisualSide">
+          <div class="detail-big-icon" id="detailBigIcon">📦</div>
+          <span class="detail-category-pill" id="detailCategoryPill">Marketplace</span>
+        </div>
+
+        <div class="detail-content-side">
+          <div class="detail-header">
+            <span class="detail-campus-location" id="detailCampusLocation">Horizon University Karawang</span>
+            <h2 class="detail-title" id="detailTitle">Nama Item</h2>
+            <div class="detail-price-row">
+              <span class="detail-price" id="detailPrice">Rp 0</span>
+              <span class="detail-unit" id="detailUnit"></span>
+            </div>
+          </div>
+
+          <div class="detail-seller-box">
+            <div class="seller-avatar" id="detailSellerAvatar">M</div>
+            <div class="seller-details">
+              <h4 class="seller-name" id="detailSellerName">Nama Penjual</h4>
+              <p class="seller-sub">Mahasiswa Terverifikasi • Respon Cepat (&lt; 10 Menit)</p>
+            </div>
+            <button class="btn-chat-seller-sm" onclick="startChatFromDetail()" title="Mulai obrolan">
+              💬 Chat
+            </button>
+          </div>
+
+          <div class="detail-desc-box">
+            <h4>Deskripsi Penawaran:</h4>
+            <p id="detailDesc">Deskripsi lengkap barang atau jasa.</p>
+          </div>
+
+          <div class="detail-perks">
+            <div class="perk-item">
+              <span class="perk-icon">📍</span>
+              <span>Bisa COD di Gedung Kampus / Kantin</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">⚡</span>
+              <span>Harga Spesial Mahasiswa</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">🤝</span>
+              <span>Transaksi Langsung &amp; Terpercaya</span>
+            </div>
+          </div>
+
+          <div class="detail-actions">
+            <button class="btn btn-primary flex-1" onclick="openOrderModalFromDetail()">
+              🛒 Beli / Pesan Sekarang
+            </button>
+            <button class="btn btn-outline-primary" onclick="startChatFromDetail()">
+              💬 Tanya Penjual
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: FORM PEMESANAN / ORDER CHECKOUT -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Konfirmasi Pemesanan</h3>
+          <p class="modal-sub">Isi detail pengambilan/pengantaran untuk memesan</p>
+        </div>
+        <button class="btn-modal-close" onclick="closeOrderModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="orderForm" onsubmit="handleConfirmOrder(event)">
+          
+          <div class="order-summary-box">
+            <div class="order-item-title" id="orderItemTitle">Item Yang Dipesan</div>
+            <div class="order-item-price" id="orderItemPrice">Rp 0</div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="orderQty">Jumlah / Kuantitas</label>
+              <input type="number" id="orderQty" value="1" min="1" max="100" required onchange="calculateOrderTotal()">
+            </div>
+            <div class="form-group">
+              <label for="orderTotal">Total Pembayaran</label>
+              <input type="text" id="orderTotal" readonly class="input-readonly font-bold">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="orderDeliveryMethod">Metode Pengambilan / Penyerahan *</label>
+            <select id="orderDeliveryMethod" required>
+              <option value="cod-kantin">📍 COD di Kantin / Gazebo Kampus</option>
+              <option value="cod-perpus">📍 COD Depan Perpustakaan Kampus</option>
+              <option value="antar-kos">🛵 Diantar ke Kosan (Sekitar Kampus)</option>
+              <option value="digital">💻 Pengiriman File Digital (Email/WhatsApp)</option>
+              <option value="ambil-sendiri">🏢 Ambil di Stan / Lapak Penjual</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="orderLocationNotes">Lokasi Spesifik / Fakultas &amp; Kelas</label>
+            <input type="text" id="orderLocationNotes" placeholder="Contoh: Gedung B Lt. 2 R.204 atau Kos Pondok Melati Kamar 05" required>
+          </div>
+
+          <div class="form-group">
+            <label for="orderBuyerNotes">Catatan untuk Penjual (Opsional)</label>
+            <textarea id="orderBuyerNotes" rows="2" placeholder="Contoh: Sambalnya dipisah ya kak, minta tolong COD jam 12 siang."></textarea>
+          </div>
+
+          <div class="modal-footer modal-footer-inline">
+            <button type="button" class="btn btn-ghost" onclick="closeOrderModal()">Batal</button>
+            <button type="submit" class="btn btn-primary">Konfirmasi &amp; Hubungi Penjual</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6: TENTANG ASANI & KELOMPOK 6 (Slide 1, 2, 3, 10) -->
+  <div class="modal-backdrop" id="aboutModal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Tentang Platform ASANI</h3>
+          <p class="modal-sub">Awal Usahamu Dimulai dari Sini — Horizon University Indonesia</p>
+        </div>
+        <button class="btn-modal-close" onclick="closeAboutModal()">&times;</button>
+      </div>
+
+      <div class="modal-body about-body">
+        
+        <div class="about-quote-box">
+          <p class="quote-text">
+            “ASANI adalah platform marketplace dan ekosistem digital mahasiswa yang mempertemukan mahasiswa yang memiliki produk, jasa, keterampilan, maupun ide bisnis dengan mahasiswa lain yang membutuhkan.”
+          </p>
+          <span class="quote-author">— Kelompok 6, Horizon University Indonesia</span>
+        </div>
+
+        <div class="about-section-grid">
+          <div class="about-card">
+            <h4>📖 Latar Belakang</h4>
+            <p>
+              Penelitian Effiyaldi dkk. (2024) terhadap 146 responden menemukan bahwa minat mahasiswa untuk menjadi entrepreneur setelah lulus cukup tinggi. Namun ada hambatan: modal awal, kemampuan bisnis, jaringan bisnis, dan kekhawatiran terhadap risiko kebangkrutan.
+            </p>
+            <p class="highlight-p">
+              "Mahasiswa ingin berbisnis, tetapi belum memiliki ekosistem yang membantu mereka memulai."
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h4>🎯 Solusi Nyata</h4>
+            <p>
+              Marketplace besar seperti Shopee terlalu besar bagi pemula, membuat produk mahasiswa tenggelam. 
+              <strong>ASANI</strong> hadir sebagai wadah terfokus per kampus agar produk &amp; jasa mahasiswa langsung dilihat oleh target pasar terdekat: teman sekelas, ormawa, dan rekan satu kampus!
+            </p>
+          </div>
+        </div>
+
+        <div class="credits-box">
+          <h4>Tim Pengembang:</h4>
+          <p><strong>Kelompok 6</strong> • Mata Kuliah Kewirausahaan &amp; Proyek Kreatif Digital</p>
+          <p><strong>Presented to:</strong> Friend-friend &amp; Civitas Academica Horizon University Indonesia</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary full-width" onclick="closeAboutModal()">Tutup &amp; Mulai Menggunakan ASANI</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 7: PENJELASAN 3 PILAR (Slide 6) -->
+  <div class="modal-backdrop" id="pillarModal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">3 Pilar Nilai ASANI</h3>
+          <p class="modal-sub">Earn, Buy, Build — Ekosistem Mandiri Mahasiswa</p>
+        </div>
+        <button class="btn-modal-close" onclick="closePillarModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="pillar-flow-diagram">
+          <div class="diagram-step">
+            <div class="diagram-icon">💡</div>
+            <div class="diagram-label">1. Ide Bisnis</div>
+          </div>
+          <div class="diagram-arrow">&rarr;</div>
+          <div class="diagram-step">
+            <div class="diagram-icon">🛠️</div>
+            <div class="diagram-label">2. Prototype</div>
+          </div>
+          <div class="diagram-arrow">&rarr;</div>
+          <div class="diagram-step">
+            <div class="diagram-icon">📦</div>
+            <div class="diagram-label">3. Produk / Jasa</div>
+          </div>
+          <div class="diagram-arrow">&rarr;</div>
+          <div class="diagram-step">
+            <div class="diagram-icon">💰</div>
+            <div class="diagram-label">4. Penjualan &amp; Reputasi</div>
+          </div>
+        </div>
+
+        <p class="text-center mt-3 text-muted">
+          Website ini menjadi sarana menguji apakah ide bisnis kamu benar-benar memiliki pasar di kampus sebelum melangkah ke skala yang lebih luas.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary full-width" onclick="closePillarModal()">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-col-main">
+        <div class="footer-logo-row">
+          <div class="logo-icon-wrap xs">
+            <svg viewBox="0 0 100 100" class="asani-svg-logo">
+              <polygon points="50,14 84,27 50,40 16,27" fill="#ffffff"/>
+              <path d="M50,30 L22,86 L36,86 L50,56 L64,86 L78,86 Z" fill="#93c5fd"/>
+              <path d="M43,62 L57,62 L59,76 L41,76 Z" fill="#f97316"/>
+              <path d="M20,68 C22,82 42,92 68,78 C80,72 84,60 86,52" fill="none" stroke="#f97316" stroke-width="5"/>
+            </svg>
+          </div>
+          <span class="footer-brand-title">ASANI</span>
+        </div>
+        <p class="footer-tagline">Awal Usahamu Dimulai dari Sini — Dari Mahasiswa untuk Mahasiswa</p>
+        <p class="footer-subtext">Horizon University Indonesia • Kelompok 6</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Layanan Kampus</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('marketplace')">Marketplace Barang</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('fnb')">Food &amp; Beverage (F&amp;B)</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('jasa')">Penyedia Jasa &amp; Freelance</a></li>
+          <li><a href="javascript:void(0)" onclick="openCampusModal()">Pilih Area Kampus</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Fitur Mahasiswa</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="openAddListingModal()">Buka Lapak Sendiri</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('chat')">Chat &amp; Komunikasi</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('orders')">Status Pesanan</a></li>
+          <li><a href="javascript:void(0)" onclick="openAboutModal()">Latar Belakang &amp; Solusi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Area Kampus Terdaftar</h4>
+        <div class="footer-campus-tags">
+          <span class="c-tag">Horizon Univ. Karawang</span>
+          <span class="c-tag">ITB Bandung</span>
+          <span class="c-tag">Universitas Indonesia</span>
+          <span class="c-tag">Universitas Padjadjaran</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 ASANI — Dikembangkan oleh Kelompok 6 Horizon University Indonesia.</p>
+        <p class="footer-note">Dibuat dengan HTML, CSS, dan JavaScript murni.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
