@@ -26,6 +26,7 @@ Dibangun murni menggunakan **HTML5, CSS3, dan Vanilla JavaScript (ES6+)** tanpa 
 | **7** | **Nilai Umum: 💰 Earn, 🛒 Buy, 🚀 Build (Slide 6)** | - **Earn:** Mahasiswa dapat membuka lapak sendiri via tombol **"+ Buka Lapak"**.<br>- **Buy:** Transaksi langsung dan checkout pesanan.<br>- **Build:** Uji ide bisnis dari *Ide → Prototype → Produk → Penjualan* dengan profil usaha dan reputasi ulasan. |
 | **8** | **Autentikasi Mahasiswa (Slide 9 Screen 1)** | Modal login / daftar dengan format email resmi kampus (`@kampus.ac.id`), profil terverifikasi, dan pergantian pengguna secara langsung. |
 | **9** | **Mobile Bottom Navigation (Slide 9 Screen 3)** | Navigasi bawah responsif: *Beranda*, *Pesanan (Beli/Jual)*, tombol tengah *Jual*, *Chat*, dan *Profil*. |
+| **10** | **Desain Full Responsive (Desktop, Tablet, HP)** | Tampilan adaptif mulus di layar smartphone (iPhone, Android, tablet) dengan bottom-sheet modal, navigasi chat mobile interaktif, sinkronisasi pencarian otomatis, dan tata letak grid kartu fleksibel. |
 
 ---
 

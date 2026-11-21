@@ -557,8 +557,14 @@ function navigateTo(viewId) {
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  if (viewId === 'chat' && appChatThreads.length > 0 && !appState.activeChatRecipient) {
-    selectChatThread(appChatThreads[0].id);
+  if (viewId === 'chat') {
+    const layout = document.querySelector('.chat-app-layout');
+    if (window.innerWidth <= 768 && !appState.activeChatRecipient) {
+      if (layout) layout.classList.remove('mobile-in-chat');
+    } else if (appChatThreads.length > 0) {
+      const activeId = appState.activeChatRecipient ? appState.activeChatRecipient.id : appChatThreads[0].id;
+      selectChatThread(activeId);
+    }
   }
 
   if (viewId === 'orders') {
@@ -701,16 +707,23 @@ function filterBySub(sub, btnElem) {
 
 function handleSearch(query) {
   appState.searchQuery = query;
+  
+  // Synchronize both desktop & mobile inputs
+  const dInput = document.getElementById('globalSearchInput');
+  const mInput = document.getElementById('mobileSearchInput');
+  if (dInput && dInput.value !== query) dInput.value = query;
+  if (mInput && mInput.value !== query) mInput.value = query;
+
   const activeTag = document.getElementById('activeQueryTag');
   const queryText = document.getElementById('queryText');
   const clearBtn = document.getElementById('clearSearchBtn');
 
   if (query.trim() !== '') {
-    activeTag.style.display = 'inline-flex';
-    queryText.textContent = query;
+    if (activeTag) activeTag.style.display = 'inline-flex';
+    if (queryText) queryText.textContent = query;
     if (clearBtn) clearBtn.style.display = 'block';
   } else {
-    activeTag.style.display = 'none';
+    if (activeTag) activeTag.style.display = 'none';
     if (clearBtn) clearBtn.style.display = 'none';
   }
 
@@ -718,9 +731,10 @@ function handleSearch(query) {
 }
 
 function clearSearch() {
-  document.getElementById('globalSearchInput').value = '';
-  const mobileInput = document.querySelector('.mobile-search-container input');
-  if (mobileInput) mobileInput.value = '';
+  const dInput = document.getElementById('globalSearchInput');
+  const mInput = document.getElementById('mobileSearchInput');
+  if (dInput) dInput.value = '';
+  if (mInput) mInput.value = '';
   handleSearch('');
 }
 
@@ -1074,12 +1088,23 @@ function selectChatThread(threadId) {
   thread.unread = 0;
   saveChats();
 
+  // If on mobile screen, toggle class to reveal conversation window
+  const layout = document.querySelector('.chat-app-layout');
+  if (layout) layout.classList.add('mobile-in-chat');
+
   // Update Active Chat Header
   document.getElementById('activeChatName').textContent = thread.name;
   document.getElementById('activeChatRole').textContent = `${thread.role} • Online`;
   document.getElementById('activeChatAvatar').textContent = thread.avatar;
 
   renderActiveMessages();
+  renderChatThreads();
+}
+
+function mobileBackToChatList() {
+  const layout = document.querySelector('.chat-app-layout');
+  if (layout) layout.classList.remove('mobile-in-chat');
+  appState.activeChatRecipient = null;
   renderChatThreads();
 }
 
